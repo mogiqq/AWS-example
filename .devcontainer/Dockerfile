@@ -20,5 +20,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && ./aws/install \
     && rm -rf awscliv2.zip ./aws
 
+    # 以 Debian/Ubuntu 為基礎的鏡像安裝aws cdk
+    RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
+    && apt-get install -y nodejs
+
 # 切換回預設用戶 (VS Code 官方鏡像通常是 vscode)
 USER vscode
