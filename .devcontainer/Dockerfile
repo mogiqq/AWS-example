@@ -20,9 +20,18 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && ./aws/install \
     && rm -rf awscliv2.zip ./aws
 
-    # 以 Debian/Ubuntu 為基礎的鏡像安裝aws cdk
-    RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
+# 以 Debian/Ubuntu 為基礎的鏡像安裝aws cdk
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
     && apt-get install -y nodejs
+
+# 更新套件清單並安裝 Ruby
+# ruby-full 會安裝完整的 Ruby 環境，build-essential 則是未來安裝 Gem 套件（如需要編譯 C 延伸模組）時必備的工具
+RUN apt-get update && apt-get install -y \
+    ruby-full \
+    build-essential \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # 切換回預設用戶 (VS Code 官方鏡像通常是 vscode)
 USER vscode
