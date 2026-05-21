@@ -16,3 +16,7 @@ aws s3api put-object --bucket metadata-fun-ab-0518 --key hello.txt --metadata Pl
 
 # Get Metadata through head object
 aws s3api head-object --bucket metadata-fun-ab-0518 --key hello.txt
+
+# Cleanup
+aws s3 rm s3://metadata-fun-ab-0518/hello.txt
+aws s3 rb s3://metadata-fun-ab-0518

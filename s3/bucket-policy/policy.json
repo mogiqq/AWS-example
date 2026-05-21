@@ -1,0 +1,19 @@
+{
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "arn:aws:iam::982534370245:user/LauraChen"
+         },
+         "Action": [
+            "s3:ListBucket",
+            "s3:GetObject",
+            "s3:PutObject"
+         ],
+         "Resource": [
+            "arn:aws:s3:::bucket-policy-example-ab-0521",
+            "arn:aws:s3:::bucket-policy-example-ab-0521/*"
+         ]
+      }
+   ]
+}
